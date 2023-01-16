@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "8888:8888"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/OzgurYazilimReportApp
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=3012
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=3012
+      - POSTGRES_DB=OzgurYazilimReportApp
+  front :
+    image : frontendreportozgur
+    ports:
+      - "3000:3000"
